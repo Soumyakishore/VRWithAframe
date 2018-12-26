@@ -9,7 +9,7 @@ def hello():
 
 
 
-@app.route('/projects')
+@app.route('/class1')
 def projects():
     return render_template("index.html", title = 'Projects')
 
