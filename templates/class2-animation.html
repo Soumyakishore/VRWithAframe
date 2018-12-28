@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello, World! - A-Frame</title>
+    <meta name="description" content="Hello, World! - A-Frame">
+    <script src="{{ url_for('static', filename = 'aframe.min.js') }}"></script>
+	 <script src="{{ url_for('static', filename = 'aframe-environment-component.min.js') }}"></script>
+	 <script src="{{ url_for('static', filename = 'aframe-event-set-component.min.js') }}"></script>
+	
+ 
+  
+
+ </head>
+<body>
+	
+
+  <a-scene antialias="true" class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
+		<a-assets>       
+			<a-mixin id="cube" geometry="primitive: box"></a-mixin>
+			<a-mixin id="hoverColor" event-set__mouseenter="material.color: #CC435F"></a-mixin>
+			<a-mixin id="selectColor" event-set__click="material.color: #876A96"></a-mixin>
+			<a-mixin id="leaveColor" event-set__mouseleave="material.color: #9DE0AD"></a-mixin>
+			<a-mixin id="red" material="color: #F35F5F"></a-mixin>
+			<a-mixin id="green" material="color: #9DE0AD"></a-mixin>
+			<a-mixin id="blue" material="color: #36A3EB"></a-mixin>
+			<a-mixin id="yellow" material="color: #F1EA65"></a-mixin>
+			<a-mixin id="sphere" geometry="primitive: sphere"></a-mixin>
+      </a-assets>
+	  
+	  
+	  <a-entity position="0 .6 4">
+        <a-camera>
+          <a-entity raycaster="far: 30; objects: .intersectable"
+                    cursor
+                    geometry="primitive: ring; radiusOuter: 0.015;
+                              radiusInner: 0.01; segmentsTheta: 32"
+                    material="color: #283644; shader: flat"
+                    position="0 0 -0.75"></a-entity>
+        </a-camera>
+      </a-entity>
+
+      <a-entity position="-3.5 1 0">
+        <a-entity mixin="red cube" class="intersectable">
+            <a-animation attribute="scale" begin="mouseenter" to="2 2 2" easing="ease-in"></a-animation>
+			<a-animation attribute="rotation" begin="mouseenter" to="0 360 0" easing="ease-in"></a-animation>			
+			<a-animation attribute="scale" begin="mouseleave" to="1 1 1" easing="ease-in"></a-animation>
+			<a-animation attribute="rotation" begin="mouseleave" to="0 0 0" easing="ease-in"></a-animation>
+        </a-entity>
+      </a-entity>
+
+      <a-entity position="0 1 1">
+        <a-entity mixin="yellow cube" class="intersectable">
+				  <a-animation attribute="position" begin="mouseenter" to="20 40 -80" easing="ease-in" dur="2000" ></a-animation> 				  
+				  <a-animation attribute="position" begin="mouseleave" to="0 0 0" easing="ease-in" dur="1000" ></a-animation>
+				  				  		  
+        </a-entity>
+      </a-entity>
+  
+  
+	<a-entity environment="preset: egypt"></a-entity>
+    
+  </a-scene>
+</body>
+</html>
