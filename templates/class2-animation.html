@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title>Hello, World! - A-Frame</title>
     <meta name="description" content="Hello, World! - A-Frame">
-    <script src="{{ url_for('static', filename = 'aframe.min.js') }}"></script>
-	 <script src="{{ url_for('static', filename = 'aframe-environment-component.min.js') }}"></script>
-	 <script src="{{ url_for('static', filename = 'aframe-event-set-component.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'js/aframe.min.js') }}"></script>
+	 <script src="{{ url_for('static', filename = 'js/aframe-environment-component.min.js') }}"></script>
+	 <script src="{{ url_for('static', filename = 'js/aframe-event-set-component.min.js') }}"></script>
 	
  
   
@@ -51,8 +51,8 @@
 
       <a-entity position="0 1 1">
         <a-entity mixin="yellow cube" class="intersectable">
-				  <a-animation attribute="position" begin="mouseenter" to="20 40 -80" easing="ease-in" dur="2000" ></a-animation> 				  
-				  <a-animation attribute="position" begin="mouseleave" to="0 0 0" easing="ease-in" dur="1000" ></a-animation>
+				  <a-animation attribute="position" begin="mouseenter" to="2 4 -8" easing="ease-in" dur="2000" ></a-animation> 				  
+				  
 				  				  		  
         </a-entity>
       </a-entity>

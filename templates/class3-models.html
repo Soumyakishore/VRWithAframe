@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lamborghini</title>
+    <meta name="description" content="Hello, World! - A-Frame">
+    <script src="{{ url_for('static', filename = 'js/aframe.min.js') }}"></script>
+	 <script src="{{ url_for('static', filename = 'js/aframe-environment-component.min.js') }}"></script>
+	 <script src="{{ url_for('static', filename = 'js/aframe-event-set-component.min.js') }}"></script>
+	 <script src="{{ url_for('static', filename = 'js/jQuery.js') }}"></script>
+	 <script>
+  AFRAME.registerComponent("resetorientation", {
+    init: function() {
+	var cameraEl = document.querySelector('a-camera');
+	
+	cameraEl.addEventListener('physicscollided', function (event) {
+		  var player = document.querySelector("a-camera")
+          var angle = player.getAttribute("rotation")
+          var x = 1 * Math.cos(angle.y * Math.PI / 180)
+          var y = 1 * Math.sin(angle.y * Math.PI / 180)
+          var pos = player.getAttribute("position")
+          pos.x -= y;
+          pos.z -= x;
+          player.setAttribute("position", pos);
+		  //var cameraEl = document.querySelector('a-camera');
+		  //cameraEl.emit('physicscollided', false);
+});
+		//cameraEl.emit('physicscollided', false);
+      
+      
+    }
+  })
+  
+var myVar = setInterval(myTimer, 100);
+
+function myTimer() {
+  var cameraEl = document.querySelector('a-camera');
+cameraEl.emit('physicscollided', false);
+}
+
+ 
+
+</script>	
+	
+ 
+  
+
+ </head>
+<body>
+	
+
+  <a-scene antialias="true" class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="enabled: true">
+		<a-assets>
+			<!--<a-asset-item id="tree-obj" src="{{ url_for('static', filename = 'models/Lamborghini/Lamborghini_Aventador.obj') }}"></a-asset-item>
+			<a-asset-item id="tree-mtl" src="{{ url_for('static', filename = 'models/Lamborghini/Lamborghini_Aventador.mtl') }}"></a-asset-item>
+			<a-asset-item id="man-obj" src="{{ url_for('static', filename = 'models/man/man.obj') }}"></a-asset-item>
+			<a-asset-item id="heli-obj" src="{{ url_for('static', filename = 'models/heli/heli.obj') }}"></a-asset-item>-->
+			
+			<a-asset-item id="eclipse-obj" src="{{ url_for('static', filename = 'models/eclipse/eclipse.obj') }}"></a-asset-item>
+			
+		</a-assets>
+		<a-entity position="0.3 -0.56 -0.4" resetorientation id="cameraWrapper">
+        <a-camera position="-0.101 1.781 -0.095" rotation="-6.188 451.262 0.000" id="portal">
+          <a-entity raycaster="far: 30; objects: .intersectable"
+                    cursor
+                    geometry="primitive: ring; radiusOuter: 0.015;
+                              radiusInner: 0.01; segmentsTheta: 32"
+                    material="color: #283644; shader: flat"
+                    position="0 0 -0.75">
+		  </a-entity>
+			<a-entity position ="-0.336 -1.189 0.268" rotation= "-0.001 -179.932 -0.116" obj-model="obj:#eclipse-obj" scale="0.05 0.05 0.05" class="intersectable" >
+			</a-entity>
+        </a-camera>
+      
+	  
+	  <!--<a-animation attribute="position" begin="10000" easing="ease" dur="10000"></animation>-->
+		
+	  </a-entity>
+	  
+	 
+  
+	<a-entity environment="preset: forest"></a-entity>
+    
+  </a-scene>
+</body>
+
+</html>
