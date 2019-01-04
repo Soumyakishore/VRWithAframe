@@ -19,9 +19,9 @@
           var x = 1 * Math.cos(angle.y * Math.PI / 180)
           var y = 1 * Math.sin(angle.y * Math.PI / 180)
           var pos = cameraEl.getAttribute("position")
-          pos.x -= y;
-          pos.z -= x;
-          rig.setAttribute("position", pos);
+          //pos.x -= y;
+          //pos.z -= x;
+          //rig.setAttribute("position", pos);
   }
 	
 	
@@ -29,11 +29,15 @@
     
 		  
 });
+
+window.addEventListener("gamepadconnected", function(e) {
+  var gp = navigator.getGamepads()[e.gamepad.index];
+  console.log("Gamepad connected at index %d: %s. %d buttons, %d axes.",
+    gp.index, gp.id,
+    gp.buttons.length, gp.axes.length);
+});
+
 		
-
-
- 
-
 </script>	
 	
  
@@ -48,12 +52,12 @@
 			<!--<a-asset-item id="tree-obj" src="{{ url_for('static', filename = 'models/Lamborghini/Lamborghini_Aventador.obj') }}"></a-asset-item>
 			<a-asset-item id="tree-mtl" src="{{ url_for('static', filename = 'models/Lamborghini/Lamborghini_Aventador.mtl') }}"></a-asset-item>
 			<a-asset-item id="man-obj" src="{{ url_for('static', filename = 'models/man/man.obj') }}"></a-asset-item>
-			<a-asset-item id="heli-obj" src="{{ url_for('static', filename = 'models/heli/heli.obj') }}"></a-asset-item>-->
+			<a-asset-item id="heli-obj" src="{{ url_for('static', filename = 'models/heli/heli.obj') }}"></a---asset-item>-->
 			
 			<a-asset-item id="eclipse-obj" src="{{ url_for('static', filename = 'models/eclipse/eclipse.obj') }}"></a-asset-item>
 			
 		</a-assets>
-		<a-entity position="0.3 -0.56 -0.4" resetorientation id="rig" movement-controls>
+		<a-entity position="0.3 -0.56 -0.4" resetorientation id="rig" gamepad-controls>
         <a-camera position="-0.101 1.781 -0.095" rotation="-6.188 451.262 0.000" id="portal" look-controls="pointerLockEnabled: true">
           <a-entity raycaster="far: 30; objects: .intersectable"
                     cursor
