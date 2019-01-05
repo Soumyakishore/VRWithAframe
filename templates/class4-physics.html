@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Physics</title>
+    <meta name="description" content="Hello, World! - A-Frame">
+    <script src="{{ url_for('static', filename = 'js/aframe.min.js') }}"></script>
+	 <script src="{{ url_for('static', filename = 'js/aframe-environment-component.min.js') }}"></script>	
+	 <script src="{{ url_for('static', filename = 'js/aframe-physics-system.min.js') }}"></script>
+	<script language="javascript">
+		AFRAME.registerComponent("refresh", {
+        init: function() {
+          this.el.addEventListener('click', function (evt) {
+			console.log("click triggered");
+            var sphere=document.querySelector('a-sphere');
+			//console.log(sphere);
+			
+			//sphere.removeAttribute('dynamic-body');
+			//console.log(pos.y);
+			//var pos={x:0,y:0,z:0}
+			//pos.x=0;
+			//pos.y=1.325;
+			//pos.z=3.4;
+			//sphere.setAttribute("position", pos);
+			//sphere.setAttribute('dynamic-body','mass:17.5');
+			sphere.body.velocity.set(3, 20,-12)
+            
+          });
+        }
+      })
+	
+	
+	
+    
+		  
+
+	</script>
+	 
+	
+ 
+  
+
+ </head>
+<body>
+	
+
+  <a-scene background="color: #FFFFFF" physics="friction: 1; restitution: 0.6; iterations: 30;" >
+		<a-assets>       
+			<a-mixin id="cube" geometry="primitive: box"></a-mixin>
+			<a-mixin id="hoverColor" event-set__mouseenter="material.color: #CC435F"></a-mixin>
+			<a-mixin id="selectColor" event-set__click="material.color: #876A96"></a-mixin>
+			<a-mixin id="leaveColor" event-set__mouseleave="material.color: #9DE0AD"></a-mixin>
+			<a-mixin id="red" material="color: #F35F5F"></a-mixin>
+			<a-mixin id="green" material="color: #9DE0AD"></a-mixin>
+			<a-mixin id="blue" material="color: #36A3EB"></a-mixin>
+			<a-mixin id="yellow" material="color: #F1EA65"></a-mixin>
+			<a-mixin id="sphere" geometry="primitive: sphere"></a-mixin>
+      </a-assets>
+	  
+	  
+	  <a-entity id="wrapper" position="0 3 6" move-rig>
+        <a-entity id="camera" camera wasd-controls look-controls mouse-cursor>
+          <a-cursor id="cursor" fuse="true"></a-cursor>
+        </a-entity>
+    </a-entity>
+
+      
+
+      <a-sphere mysphere id="green" color="#00AA00" position="0 1.325 3.4" radius="0.35" grabbable dynamic-body="mass: 200" track-position>
+				
+	  </a-sphere>
+	  
+	  <a-box id="refresh" position="0 7 -10.9" scale="4 1 1" color="#ccc" static-body="mass:1" refresh></a-box>
+		<a-text position="-1.6 7 -10.3" value="Raise" color="black" wrap-count="15"></a-text>
+  
+  <a-plane static-body color="#CCC" height="200" width="200"  rotation="-90 0 0"></a-plane>
+	
+    
+  </a-scene>
+</body>
+
+</html>
