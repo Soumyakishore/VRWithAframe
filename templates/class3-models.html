@@ -8,8 +8,13 @@
 	 <script src="{{ url_for('static', filename = 'js/aframe-environment-component.min.js') }}"></script>
 	 <script src="{{ url_for('static', filename = 'js/aframe-event-set-component.min.js') }}"></script>
 	 <script src="{{ url_for('static', filename = 'js/jQuery.js') }}"></script>
+	 <script src="{{ url_for('static', filename = 'js/aframe-gamepad-controls.js') }}"></script>
+	 <script src="{{ url_for('static', filename = 'js/aframe-keyboard-controls.js') }}"></script>
+	 <script src="{{ url_for('static', filename = 'js/aframe-proxy-controls.js') }}"></script>
+	
+	 
 	 <script>
-  AFRAME.registerComponent("resetorientation", {    
+  /*AFRAME.registerComponent("resetorientation", {    
 	
 	tick: function (time, timeDelta) {
 		  //console.log(timeDelta);	
@@ -36,7 +41,7 @@ window.addEventListener("gamepadconnected", function(e) {
     gp.index, gp.id,
     gp.buttons.length, gp.axes.length);
 });
-
+*/
 		
 </script>	
 	
@@ -47,7 +52,7 @@ window.addEventListener("gamepadconnected", function(e) {
 <body>
 	
 
-  <a-scene antialias="true" class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="enabled: true">
+  <a-scene proxy-controls="proxyUrl:https://proxy-controls.donmccurdy.com;enableOverlay:false;pairCode:cgaframe-1234;debug:true" antialias="true" class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="enabled: true" >
 		<a-assets>
 			<!--<a-asset-item id="tree-obj" src="{{ url_for('static', filename = 'models/Lamborghini/Lamborghini_Aventador.obj') }}"></a-asset-item>
 			<a-asset-item id="tree-mtl" src="{{ url_for('static', filename = 'models/Lamborghini/Lamborghini_Aventador.mtl') }}"></a-asset-item>
@@ -57,8 +62,8 @@ window.addEventListener("gamepadconnected", function(e) {
 			<a-asset-item id="eclipse-obj" src="{{ url_for('static', filename = 'models/eclipse/eclipse.obj') }}"></a-asset-item>
 			
 		</a-assets>
-		<a-entity position="0.3 -0.56 -0.4" resetorientation id="rig" gamepad-controls>
-        <a-camera position="-0.101 1.781 -0.095" rotation="-6.188 451.262 0.000" id="portal" look-controls="pointerLockEnabled: true">
+		<a-entity position="0.3 -0.56 -0.4" resetorientation id="rig" >
+        <a-camera position="-0.101 1.781 -0.095" rotation="-6.188 451.262 0.000" id="portal" gamepad-controls keyboard-controls look-controls="pointerLockEnabled: true">
           <a-entity raycaster="far: 30; objects: .intersectable"
                     cursor
                     geometry="primitive: ring; radiusOuter: 0.015;
