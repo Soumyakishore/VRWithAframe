@@ -63,7 +63,7 @@ window.addEventListener("gamepadconnected", function(e) {
 			
 			
 		</a-assets>
-		<a-entity position="0.3 -0.56 -0.4" resetorientation id="rig" >
+		<a-entity position="0.3 -0.56 -0.4" resetorientation id="rig" static-body> 
         <a-camera position="-0.101 1.781 -0.095" rotation="-6.188 451.262 0.000" id="portal" gamepad-controls keyboard-controls look-controls="pointerLockEnabled: true">
           <a-entity raycaster="far: 30; objects: .intersectable"
                     cursor
@@ -72,7 +72,7 @@ window.addEventListener("gamepadconnected", function(e) {
                     material="color: #283644; shader: flat"
                     position="0 0 -0.75">
 		  </a-entity>
-			<a-entity dynamic-body="mass: 200" position ="-0.336 -1.189 0.268" rotation= "-0.001 -179.932 -0.116" obj-model="obj:#eclipse-obj" scale="0.05 0.05 0.05" class="intersectable" >
+			<a-entity  position ="-0.336 -1.189 0.268" rotation= "-0.001 -179.932 -0.116" obj-model="obj:#eclipse-obj" scale="0.05 0.05 0.05" class="intersectable" >
 			</a-entity>
         </a-camera>
       
@@ -83,7 +83,7 @@ window.addEventListener("gamepadconnected", function(e) {
 	  
 	 
   
-	<a-entity static-body environment="preset: forest"></a-entity>
+	<a-entity  environment="preset: forest"></a-entity>
     
   </a-scene>
 </body>
