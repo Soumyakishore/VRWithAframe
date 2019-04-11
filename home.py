@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import render_template
 import os
-app = Flask(__name__)
+app = Flask(__name__,)
 
 @app.route("/")
 def hello():
@@ -27,6 +27,10 @@ def class4():
 @app.route('/class5')
 def class5():
     return render_template("class5-grabbable.html")
+	
+@app.route('/class6')
+def class6():
+    return render_template("class6-gamepad.html")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

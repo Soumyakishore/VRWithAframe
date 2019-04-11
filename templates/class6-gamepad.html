@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <!-- A-Frame Library -->
+   <script src="{{ url_for('static', filename = 'js/aframe-v0.8.2.js') }}"></script>
+   
+   <script src="{{ url_for('static', filename = 'js/aframe-extras.controls.js') }}"></script>
+   
+	 
+	 <script src="{{ url_for('static', filename = 'js/aframe-environment-component.min.js') }}"></script>
+	 
+   <script src="{{ url_for('static', filename = 'js/aframe-event-set-component.min.js') }}"></script>
+	 
+    
+    
+  </head>
+  <body>
+   
+    <a-scene vr-mode-ui="enabled: true" >      
+     <a-entity id="rig" movement-controls="controls: gamepad, keyboard"          
+          position="25 0 25">
+  <a-entity camera
+            position="0 1.6 0"
+            look-controls="pointerLockEnabled: true"></a-entity>
+</a-entity>
+	  <a-entity environment="preset: forest"></a-entity>
+    </a-scene>
+  
+  </body>
+</html>
